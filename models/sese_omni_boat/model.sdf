@@ -13,7 +13,7 @@
                 <geometry>
                     <mesh>
                         <uri>model://sese_omni_boat/meshes/ASV_RYBITWA.stl</uri>
-                        <scale>0.001 0.001 0.001</scale>
+                        <scale>0.0008 0.0008 0.0008</scale>
                     </mesh>
                 </geometry>
                 <material>
@@ -31,7 +31,7 @@
             </collision>
             <inertial>
                 <pose>0 0 0 0 0 0</pose>
-                <mass>180</mass>
+                <mass>160</mass>
                 <inertia>
                     <ixx>120</ixx>
                     <ixy>0</ixy>
@@ -267,45 +267,6 @@
                 <xyz>0 1 0 </xyz>
             </axis>
         </joint>
-
-         <!-- Sensors -->
-        <link name="imu_link">
-            <inertial>
-                <pose>0 0 0 0 0 0</pose>
-                <mass>0.15</mass>
-                <inertia>
-                    <ixx>0.00001</ixx>
-                    <ixy>0</ixy>
-                    <ixz>0</ixz>
-                    <iyy>0.00002</iyy>
-                    <iyz>0</iyz>
-                    <izz>0.00002</izz>
-                </inertia>
-            </inertial>
-            <sensor name="imu_sensor" type="imu">
-                <pose>0 0 0 3.141593 0 0</pose>
-                <always_on>1</always_on>
-                <update_rate>1000.0</update_rate>
-            </sensor>
-        </link>
-        <joint name="imu_joint" type="revolute">
-            <child>imu_link</child>
-            <parent>base_link</parent>
-            <axis>
-                <xyz>0 0 1</xyz>
-                <limit>
-                    <lower>0</lower>
-                    <upper>0</upper>
-                    <effort>0</effort>
-                    <velocity>0</velocity>
-                </limit>
-                <dynamics>
-                    <damping>1.0</damping>
-                </dynamics>
-            </axis>
-        </joint>
-
-
         <plugin
             filename="gz-sim-thruster-system"
             name="gz::sim::systems::Thruster">
@@ -389,5 +350,11 @@
             filename="gz-waves1-hydrodynamics-system"
             name="gz::sim::systems::Hydrodynamics">
         </plugin>
+        <plugin
+            filename="gz-sim-odometry-publisher-system"
+            name="gz::sim::systems::OdometryPublisher">
+            <odom_topic>sese_omni_boat/local_position</odom_topic>
+            <dimensions>2</dimensions>
+      </plugin>
     </model>
 </sdf>
