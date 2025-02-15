@@ -215,6 +215,7 @@
       <uri>model://waves</uri>
     </include>
 <model name="Small gate buoy (green) #1">
+    <!-- <pose>${BOY_1_POSE}</pose> -->
     <pose>3.262602184025554 0 0 0 0 0</pose>
     <static>1</static>
     <link name="sphere">

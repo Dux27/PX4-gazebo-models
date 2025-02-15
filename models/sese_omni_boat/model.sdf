@@ -9,11 +9,11 @@
         <link name="base_link">
             <velocity_decay />
             <visual name="base_link_visual">
-                <pose>0 0 0 0 0 -1.57</pose>
+                <pose>0 0 -0.1 0 0 -1.57</pose>
                 <geometry>
                     <mesh>
                         <uri>model://sese_omni_boat/meshes/ASV_RYBITWA.stl</uri>
-                        <scale>0.0008 0.0008 0.0008</scale>
+                        <scale>0.001 0.001 0.001</scale>
                     </mesh>
                 </geometry>
                 <material>
@@ -22,16 +22,19 @@
                     <specular>0.2 0.2 0.2 1</specular>
                 </material>
             </visual>
+            <inertial auto="true" />
             <collision name="collision">
+                <!-- <mass>1</mass> -->
+                <density>136.08</density> <!-- 136.08 kg/m^3 -->
                 <geometry>
                     <box>
                         <size>0.55 1.3 0.37</size>
                     </box>
                 </geometry>
             </collision>
-            <inertial>
+            <!-- <inertial>
                 <pose>0 0 0 0 0 0</pose>
-                <mass>160</mass>
+                <mass>36</mass>
                 <inertia>
                     <ixx>120</ixx>
                     <ixy>0</ixy>
@@ -39,7 +42,7 @@
                     <iyz>0</iyz>
                     <izz>446</izz>
                 </inertia>
-            </inertial>
+            </inertial> -->
             <sensor name="air_pressure_sensor" type="air_pressure">
                 <always_on>1</always_on>
                 <update_rate>50</update_rate>
